@@ -1,6 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import {
+    getMovie
+} from '../../modules/profile'
 
 class Profile extends React.Component {
     render() {
