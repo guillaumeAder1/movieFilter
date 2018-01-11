@@ -6,19 +6,16 @@ import store, { history } from './store'
 import App from './containers/app'
 
 import './index.css'
-export default App(
-    const target = document.querySelector('#root')
 
-    render(
-      <Provider store={store}>
+const target = document.querySelector('#root')
+
+render(
+    <Provider store={store}>
         <ConnectedRouter history={history}>
-          <div>
-            <App />
-          </div>
+            <div>
+                <App />
+            </div>
         </ConnectedRouter>
-      </Provider>,
-      target
-    )
+    </Provider>,
+    target
 )
-
-
