@@ -15,7 +15,7 @@ const App = () => (
         <main>
             <Route exact path="/" component={Home} />
             <Route exact path="/about-us" component={About} />
-            <Route exact path="/my-profile" component={Profile} />
+            <Route exact path="/my-profile/*" component={Profile} />
         </main>
     </div>
 )
