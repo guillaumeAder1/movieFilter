@@ -30,7 +30,7 @@ class Profile extends React.Component {
                 return <p key={i}>{item.title}</p>
             });
         }
-        const session = (this.props.sessionid) ? this.props.sessionid.session_id : "no seesion";
+        const session = (this.props.sessionid) ? this.props.sessionid.session_id : "no session";
        
         return (
             <div>
