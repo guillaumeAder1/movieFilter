@@ -3,6 +3,7 @@ import { Route, Link } from 'react-router-dom'
 import Home from '../home'
 import About from '../about'
 import Profile from '../profile'
+import Search from '../search'
 
 const App = () => (
     <div>
@@ -10,6 +11,7 @@ const App = () => (
             <Link to="/">Home</Link>
             <Link to="/about-us">About</Link>
             <Link to="/my-profile"> My Profile</Link>
+            <Search/>
         </header>
 
         <main>
