@@ -31,8 +31,8 @@ export default (state = initState, action) => {
 }
 
 export const startSearch = (value) => {
-    return dispatch => {
-        console.log(API_KEY)
+    return (dispatch, getState) => {
+        console.log(API_KEY, getState()) // get state return all store
         const query = end_str.replace('{}', encodeURI(value))
         dispatch({
             type: SEARCHING,

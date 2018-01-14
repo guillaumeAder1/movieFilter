@@ -9,14 +9,15 @@ const App = () => (
     <div>
         <header>
             <Link to="/">Home</Link>
-            <Link to="/about-us">About</Link>
-            <Link to="/my-profile"> My Profile</Link>
+            {/* <Link to="/about-us">About</Link> */}
+            <Link to="/my-profile/"> My Profile</Link>
             <Search/>
         </header>
 
         <main>
             <Route exact path="/" component={Home} />
             <Route exact path="/about-us" component={About} />
+            <Route path="/about-us/:id/:type" component={About} />
             <Route path="/my-profile/*" component={Profile} />
         </main>
     </div>
