@@ -17,10 +17,16 @@ class Search extends React.Component{
         });
     }
     
-    sendSearch(val){
+    sendSearch(val, e){
+        e.preventDefault();
         this.props.startSearch(val)
     }
     render() {
+
+         {/* <form class="form-inline mt-2 mt-md-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"/>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form> */}
         const list = this.props.results.results || false;
         let html = list ? list.map((res,i) => {
             return <li 
@@ -28,13 +34,17 @@ class Search extends React.Component{
                 onClick={() => this.props.changePage(res.id, res.media_type)}>
                     {res.name || res.original_title}
                 </li>
-        }) : false
+        }) : false;
+
+        const res = <div className="floating show"><ul>{html}</ul></div> || false
         return (
-            <div>
-                <h2>Selected from about: {this.props.detailsValue}</h2>
-                <input id="search-movies"  type="text" value={this.state.inputValue} onChange={e => this.updateValue(e)}/>
-                <button onClick={e => this.sendSearch(this.state.inputValue)}>Ok</button>
-                <ul>{html}</ul>
+            <div>     
+                <span>{this.props.detailsValue}</span>           
+                <form className="form-inline mt-2 mt-md-0">
+                    <input id="search-movies" className="form-control mr-sm-2"  type="text" value={this.state.inputValue} onChange={e => this.updateValue(e)}/>
+                    <button className="btn btn-outline-success my-2 my-sm-0"  onClick={e => this.sendSearch(this.state.inputValue, e)}>Ok</button>
+                </form>                
+                {res}
             </div>
         );
     }

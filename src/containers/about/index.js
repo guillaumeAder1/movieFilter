@@ -18,12 +18,11 @@ class About extends React.Component{
       }
     extractData(data){
         let html = Object.keys(data).map((e,i)=>{
-            if(typeof data[e] !== 'object'){
+            if(typeof data[e] !== 'object' && !Array.isArray(data)){
                 return <div key={i}><b>{e.replace(/_/g, ' ')}:</b> {data[e].toString()}</div>                
             } else if(typeof data[e] === 'object' || typeof data[e] === 'array' ) {
-                if(data[e] !== null){
+                if(data[e] !== null){                   
                     return <div key={i} className='space'><b>{e.replace(/_/g, ' ')}:</b>{this.extractData(data[e])}</div>
-
                 }
             }  
         },this);

@@ -7,3 +7,22 @@ body {
 .space {
     margin-left: 25px;
 }
+
+.floating {
+    display: none;
+    position: absolute;
+    top: 100%;
+    background: rgb(214, 214, 214);
+    padding: 0
+}
+
+.floating.show {
+    display: block;
+}
+
+ul,
+li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
