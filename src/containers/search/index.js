@@ -31,6 +31,7 @@ class Search extends React.Component{
         }) : false
         return (
             <div>
+                <h2>Selected from about: {this.props.detailsValue}</h2>
                 <input id="search-movies"  type="text" value={this.state.inputValue} onChange={e => this.updateValue(e)}/>
                 <button onClick={e => this.sendSearch(this.state.inputValue)}>Ok</button>
                 <ul>{html}</ul>
@@ -44,7 +45,8 @@ class Search extends React.Component{
 const mapStateToProps = state => ({
     results: state.search.results,
     searching: state.search.searching,
-    value: state.search.value
+    value: state.search.value,
+    detailsValue: state.about.value
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({

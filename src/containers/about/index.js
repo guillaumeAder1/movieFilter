@@ -16,16 +16,24 @@ class About extends React.Component{
           this.res = this.props.getDetails(type, id)
         });
       }
+    extractData(data){
+        let html = Object.keys(data).map((e,i)=>{
+            if(typeof data[e] !== 'object'){
+                return <div key={i}><b>{e.replace(/_/g, ' ')}:</b> {data[e].toString()}</div>                
+            } else if(typeof data[e] === 'object' || typeof data[e] === 'array' ) {
+                if(data[e] !== null){
+                    return <div key={i} className='space'><b>{e.replace(/_/g, ' ')}:</b>{this.extractData(data[e])}</div>
+
+                }
+            }  
+        },this);
+     
+        return html;
+    }
     
     render(){
-        const data = Object.keys(this.props.results).map((e,i)=>{
-            if(typeof this.props.results[e] !== 'object'){
-                return <div key={i}><b>{e.replace('_', ' ')}:</b> {this.props.results[e].toString()}</div>
-                
-            }
-            // let label = <b>{e.replace('_', ' ')}:</b>
+        const data = this.extractData(this.props.results)
 
-        },this)
         return(
             <div>
                 <h1>About this show</h1>

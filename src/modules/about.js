@@ -23,7 +23,8 @@ export default (state = initState, action) => {
             return {
                 ...state,
                 searching: false,
-                results: action.payload
+                results: action.payload,
+                value: action.payload.name
             }
         default:
             return state
