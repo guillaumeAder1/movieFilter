@@ -34,10 +34,10 @@ export default (state = initState, action) => {
 export const getDetails = (type, id) => {
     return (dispatch) => {
         let query = path.replace('{1}', encodeURI(type))
-        let final = query.replace('{2}',id)
+        query = query.replace('{2}',id)
         dispatch({
             type: GET_DETAILS,
-            payload:axios.get(`${final}`).then(res => {
+            payload:axios.get(`${query}`).then(res => {
                 dispatch({
                     type: DETAILS_END,
                     payload: res.data

@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import { push } from 'react-router-redux'
 import {startSearch} from '../../modules/search'
+import {getDetails} from '../../modules/about'
 
 class Search extends React.Component{
     constructor(props) {
@@ -20,6 +21,7 @@ class Search extends React.Component{
 
     select(id, media_type){
         this.props.changePage(id, media_type);
+        this.props.getDetails( media_type,id);
         this.setState({
             cssClass: 'floating'
         });
@@ -47,7 +49,7 @@ class Search extends React.Component{
                     {res.vote_average ? <span>{res.vote_average}</span> : false }
                 </li>
         }) : false;
-        const res = <div className={this.state.cssClass}><ul>{html}</ul></div> || false;
+        const res = <div id="searchResults" className={this.state.cssClass}><ul>{html}</ul></div> || false;
 
         return (
             <div>                   
@@ -67,11 +69,13 @@ const mapStateToProps = state => ({
     results: state.search.results,
     searching: state.search.searching,
     value: state.search.value,
-    detailsValue: state.about.value
+    detailsValue: state.about.value,
+    //getAboout: state
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
    startSearch,
+   getDetails,
    changePage: (e,t) => push(`/about-us/${e}/${t}`)
 }, dispatch)
 
