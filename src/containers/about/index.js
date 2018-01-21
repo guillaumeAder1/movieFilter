@@ -31,6 +31,7 @@ class About extends React.Component{
     }
     
     render(){
+        // const data = (this.props.match.params) ? this.extractData(this.props.results) : this.extractData(this.props.results);
         const data = this.extractData(this.props.results)
 
         return(

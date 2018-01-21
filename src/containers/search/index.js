@@ -43,8 +43,8 @@ class Search extends React.Component{
                 onClick={() => this.select(res.id, res.media_type)}>
                     <span>{res.name || res.original_title}</span>                    
                     <span>{(res.release_date) ? res.release_date.slice(0,4) : false}</span>
-                    <span>{res.media_type}</span>
-                    <span>{res.vote_average}</span>
+                    <span>{res.media_type || false}</span>
+                    {res.vote_average ? <span>{res.vote_average}</span> : false }
                 </li>
         }) : false;
         const res = <div className={this.state.cssClass}><ul>{html}</ul></div> || false;
