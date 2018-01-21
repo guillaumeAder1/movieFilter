@@ -8,6 +8,7 @@ import {
     getToken,
     getSession
 } from '../../modules/profile'
+import Glyphicon from 'react-bootstrap/lib/Glyphicon'
 
 class Profile extends React.Component {
    
@@ -30,18 +31,22 @@ class Profile extends React.Component {
                 return <p key={i}>{item.title}</p>
             });
         }
-        const session = (this.props.sessionid) ? this.props.sessionid.session_id : "no session";
+        const session = (this.props.sessionid) ? this.props.sessionid.session_id : false;
        
         return (
-            <div>
-                <h1>Profile Page</h1>
-                
-                {this.props.search}
-                {session}
-                <button onClick={() => this.props.getSearch()} >Search</button>
-                <button onClick={() => this.props.stopSearch()} >Stop</button>
-                <button onClick={() => this.props.getMovie()} >Query</button>               
-                <button onClick={() => this.login()} >Login</button>               
+            <div className='jumbotron'>
+                <h3>Profile Page</h3>               
+
+                {(session) ? <div><span>Identified   </span><Glyphicon glyph="ok"/></div> : <button type="button" className="btn btn-secondary" onClick={() => this.login()} >Login</button> }
+
+                {this.props.search }
+
+                {/* <nav className='nav nav-underline'> */}
+                <button type="button" className="btn btn-light" onClick={() => this.props.getSearch()} >Already Watched</button>
+                <button type="button" className="btn btn-light" onClick={() => this.props.stopSearch()} >Stop</button>
+                <button type="button" className="btn btn-light" onClick={() => this.props.getMovie()} >Query</button>               
+                       
+                {/* </nav>         */}
                 {html}               
             </div>
         )

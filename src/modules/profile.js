@@ -9,7 +9,7 @@ export const GET_SESSION = 'profile/GET_SESSION'
 export const SESSION_FOUND = 'profile/SESSION_FOUND'
 const initialState = {
     count: 0,
-    search: 'Not searching',
+    search: false,
     results: false,
     token: false,
     isFetching: false,
@@ -64,7 +64,7 @@ export default (state = initialState, action) => {
         case SEARCHING_END:
             return {
                 ...state,
-                search: 'Searching ends'
+                search: true
             }
         default:
             return state

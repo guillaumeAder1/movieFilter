@@ -34,7 +34,7 @@ const App = () => (
             {/* <Search/> */}
         {/* </header> */}
 
-        <main>
+        <main className='container'>
             <Route exact path="/" component={Home} />
             <Route exact path="/about-us" component={About} />
             <Route path="/about-us/:id/:type" component={About} />

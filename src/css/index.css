@@ -1,3 +1,4 @@
+@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css");
 body {
     margin: 0;
     padding: 0;
@@ -65,5 +66,10 @@ li.item-search span:nth-child(1) {
 
 li.item-search:hover {
     background-color: rgb(153, 153, 153);
+    cursor: pointer;
+}
+
+button.btn.btn-light {
+    border: 1px solid grey;
     cursor: pointer;
 }
