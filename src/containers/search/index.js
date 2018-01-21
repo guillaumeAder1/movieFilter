@@ -8,7 +8,8 @@ class Search extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-          inputValue: 'tom'
+          inputValue: 'tom',
+          cssClass:'floating show'
         };
     }
     updateValue(e){
@@ -16,30 +17,40 @@ class Search extends React.Component{
             inputValue: e.target.value
         });
     }
+
+    select(id, media_type){
+        this.props.changePage(id, media_type);
+        this.setState({
+            cssClass: 'floating'
+        });
+    }
     
     sendSearch(val, e){
         e.preventDefault();
-        this.props.startSearch(val)
+        this.props.startSearch(val)       
+        this.setState({
+            cssClass: 'floating show'
+        });
+        
     }
     render() {
 
-         {/* <form class="form-inline mt-2 mt-md-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"/>
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form> */}
+        
         const list = this.props.results.results || false;
-        let html = list ? list.map((res,i) => {
-            return <li 
+        const html = list ? list.map((res,i) => {
+            return <li className='item-search'
                 key={i} 
-                onClick={() => this.props.changePage(res.id, res.media_type)}>
-                    {res.name || res.original_title}
+                onClick={() => this.select(res.id, res.media_type)}>
+                    <span>{res.name || res.original_title}</span>                    
+                    <span>{(res.release_date) ? res.release_date.slice(0,4) : false}</span>
+                    <span>{res.media_type}</span>
+                    <span>{res.vote_average}</span>
                 </li>
         }) : false;
+        const res = <div className={this.state.cssClass}><ul>{html}</ul></div> || false;
 
-        const res = <div className="floating show"><ul>{html}</ul></div> || false
         return (
-            <div>     
-                <span>{this.props.detailsValue}</span>           
+            <div>                   
                 <form className="form-inline mt-2 mt-md-0">
                     <input id="search-movies" className="form-control mr-sm-2"  type="text" value={this.state.inputValue} onChange={e => this.updateValue(e)}/>
                     <button className="btn btn-outline-success my-2 my-sm-0"  onClick={e => this.sendSearch(this.state.inputValue, e)}>Ok</button>

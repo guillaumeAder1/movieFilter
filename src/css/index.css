@@ -24,5 +24,41 @@ ul,
 li {
     list-style: none;
     padding: 0;
-    margin: 0;
+}
+
+li.item-search {
+    padding: 20px 15px;
+    border-bottom: 1px solid rgb(131, 131, 131);
+}
+
+li.item-search span:nth-child(2) {
+    font-size: 0.9em;
+}
+
+li.item-search span:nth-child(3) {
+    font-size: 0.7em;
+    margin: 5px;
+    text-transform: uppercase;
+}
+
+li.item-search span:nth-child(4) {
+    font-size: 0.8em;
+    border: 1px solid rgb(214, 211, 211);
+    background-color: rgb(165, 165, 165);
+    color: white;
+    margin: 5px;
+    padding: 5px;
+}
+
+li.item-search span:nth-child(1) {
+    font-size: 1em;
+    display: inline-block;
+    font-weight: 700;
+    color: rgb(83, 83, 83);
+    width: 100%;
+}
+
+li.item-search:hover {
+    background-color: rgb(153, 153, 153);
+    cursor: pointer;
 }
